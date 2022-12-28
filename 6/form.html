@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styel-2.css">
+    <meta http-equiv="refresh">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Enter here you want</h1>
+        <input id="form-input" type="text" value="">
+        <form action="index.html">
+            <button id="form-send-btn" class="button-34" onclick="myfun()">send</button>
+        </form>
+    </div>
+
+    <script>
+        let InputData = document.getElementById("form-input");
+        let Box = document.getElementById("display-input");
+        let new_data = InputData.value;
+        let myfun = () => {
+            let new_data = InputData.value;
+            localStorage.setItem('data', new_data);
+
+
+            if (localStorage.getItem('data')== null) {
+                localStorage.setItem('data','[]');
+            }
+            let old_data = JSON.parse(localStorage.getItem('data'));
+            old_data.push(new_data);
+
+            localStorage.setItem('data',JSON.stringify(old_data));
+        };
+    </script>
+</body>
+
+</html>
